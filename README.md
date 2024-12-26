@@ -50,46 +50,34 @@ The Planner Back-End is built with [NestJS](https://nestjs.com/), a progressive 
     • Create a new database for the application.
     • Configure the database connection in the .env file:
 
-        ```env
-        DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DATABASE_NAME
-        ```
+        DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DATABASE_NAME        
 
 4.  Run database migrations:
 
-        ```bash
         yarn prisma migrate dev
-        ```
 
 5.  Running the Application
     • Development mode:
 
-        ```bash
         yarn start:dev
-        ```
 
-        • Production mode:
+   • Production mode:
 
-        ```bash
         yarn start:prod
-        ```
 
 6.  Running Tests
     • Unit tests:
 
-        ```bash
         yarn test
-        ```
 
-        • End-to-end tests:
+   • End-to-end tests:
 
-        ```bash
         yarn test:e2e
-        ```
 
-        • Test coverage:
-        ```bash
+   • Test coverage:
+   
         yarn test:cov
-        ```
+
 
 ### Deployment
 
@@ -97,15 +85,11 @@ To deploy the application using Docker:
 
 1.  Build the Docker image:
 
-        ```bash
         docker build -t planner-backend .
-        ```
 
 2.  Run the Docker container:
 
-        ```bash
         docker run -p 3000:3000 planner-backend
-        ```
 
 Ensure that the database connection settings in the .env file are correctly configured for the production environment.
 
