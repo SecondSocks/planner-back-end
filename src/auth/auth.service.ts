@@ -82,7 +82,7 @@ export class AuthService {
 			domain: 'localhost',
 			expires: expiresIn,
 			secure: true,
-			sameSite: 'lax'
+			sameSite: 'none'
 		})
 	}
 
@@ -92,7 +92,7 @@ export class AuthService {
 			domain: 'localhost',
 			expires: new Date(0),
 			secure: true,
-			sameSite: 'lax'
+			sameSite: 'none'
 		})
 	}
 
