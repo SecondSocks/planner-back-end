@@ -50,34 +50,37 @@ The Planner Back-End is built with [NestJS](https://nestjs.com/), a progressive 
     • Create a new database for the application.
     • Configure the database connection in the .env file:
 
-        DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DATABASE_NAME        
+        DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DATABASE_NAME
 
-4.  Run database migrations:
+4.  Add in the .env file JWT_SECRET key:
+
+        JWT_SECRET=""
+
+5.  Run database migrations:
 
         yarn prisma migrate dev
 
-5.  Running the Application
+6.  Running the Application
     • Development mode:
 
         yarn start:dev
 
-   • Production mode:
+• Production mode:
 
         yarn start:prod
 
-6.  Running Tests
+7.  Running Tests
     • Unit tests:
 
         yarn test
 
-   • End-to-end tests:
+• End-to-end tests:
 
         yarn test:e2e
 
-   • Test coverage:
-   
-        yarn test:cov
+• Test coverage:
 
+        yarn test:cov
 
 ### Deployment
 
