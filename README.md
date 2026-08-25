@@ -32,7 +32,7 @@ The Planner Back-End is built with [NestJS](https://nestjs.com/), a progressive 
 
 ### Installation
 
-1.  planning functionalities.
+1.  Clone the repository:
 
     ```bash
     git clone https://github.com/SecondSocks/planner-back-end.git
@@ -82,19 +82,63 @@ The Planner Back-End is built with [NestJS](https://nestjs.com/), a progressive 
 
         yarn test:cov
 
-### Deployment
+### Docker
 
-To deploy the application using Docker:
+The easiest way to run the application is with Docker Compose, which starts both the API and a PostgreSQL database.
+
+1.  Build and start the services:
+
+    ```bash
+    docker compose up --build
+    ```
+
+    The API will be available at `http://localhost:4200`.
+
+2.  Run in the background (detached):
+
+    ```bash
+    docker compose up -d
+    ```
+
+3.  Stop the services:
+
+    ```bash
+    docker compose down
+    ```
+
+4.  Stop the services and remove the database volume:
+
+    ```bash
+    docker compose down -v
+    ```
+
+#### Configuration
+
+The Compose file provides sensible defaults. Override them by editing `docker-compose.yml` or by setting environment variables:
+
+- `DATABASE_URL`: PostgreSQL connection string (defaults to `postgresql://planner:planner@db:5432/planner`).
+- `JWT_SECRET`: Secret used to sign JSON Web Tokens.
+
+### Manual Docker Deployment
+
+To build and run the image without Docker Compose:
 
 1.  Build the Docker image:
 
-        docker build -t planner-backend .
+    ```bash
+    docker build -t planner-backend .
+    ```
 
 2.  Run the Docker container:
 
-        docker run -p 3000:3000 planner-backend
+    ```bash
+    docker run -p 4200:4200 \
+      -e DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DATABASE_NAME \
+      -e JWT_SECRET=your-secret \
+      planner-backend
+    ```
 
-Ensure that the database connection settings in the .env file are correctly configured for the production environment.
+Ensure that the database connection settings are correctly configured for the production environment. The container automatically applies pending Prisma migrations before starting the server.
 
 ### Contributing
 
@@ -123,5 +167,3 @@ This project is licensed under the MIT License. See the LICENSE file for details
 **GitHub**: https://github.com/SecondSocks
 
 For any inquiries or issues, please open an issue on the GitHub repository.
-
-This template provides a comprehensive overview of your project, including setup instructions, technologies used, and contribution guidelines.
